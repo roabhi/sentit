@@ -8,9 +8,8 @@ import toast from 'react-hot-toast'
 const AddPost = () => {
   const [title, setTitle] = useState('')
   const [isDisabled, setIsDisabled] = useState(false)
-  let toastPostId: string
-
   const queryClient = useQueryClient()
+  let toastPostId: string
 
   // * Create a Post
   const { mutate } = useMutation(
@@ -34,6 +33,9 @@ const AddPost = () => {
       },
       onSuccess: (data) => {
         toast.success('Post created successfully', { id: toastPostId })
+
+        // ? By invalidating the post queries we are forcing to refetch data
+        queryClient.invalidateQueries(['posts'])
         setTitle('')
         setIsDisabled(false)
       },

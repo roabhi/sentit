@@ -3,7 +3,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const Post = ({ avatar, name, postTitle, id }) => {
+type PostProps = {
+  id: string
+  avatar: string
+  name: string
+  postTitle: string
+  comments?: {
+    id: string
+    postId: string
+    userId: string
+  }[]
+}
+
+const Post = ({ avatar, name, postTitle, id, comments }) => {
   return (
     <div className="bg-zinc-800 my-8 p-8 rounded-lg">
       <div className="flex items-center gap-2">
@@ -21,7 +33,9 @@ const Post = ({ avatar, name, postTitle, id }) => {
       </div>
       <div className="flex gap-4 cursor-pointer items-center">
         <Link href={`/posts/${id}`}>
-          <p className="text-sm font-bold text-gray-500">Comments</p>
+          <p className="text-sm font-bold text-gray-500">
+            {comments?.length} Comments
+          </p>
         </Link>
       </div>
     </div>
