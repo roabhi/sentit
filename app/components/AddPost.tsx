@@ -8,6 +8,7 @@ import toast from 'react-hot-toast'
 const AddPost = () => {
   const [title, setTitle] = useState('')
   const [isDisabled, setIsDisabled] = useState(false)
+  let toastPostId: string
 
   const queryClient = useQueryClient()
 
@@ -27,12 +28,12 @@ const AddPost = () => {
       onError: (error) => {
         // ? Wrap the error on its own type to avoid TS hints
         if (error instanceof AxiosError) {
-          toast.error(error?.response?.data.message)
+          toast.error(error?.response?.data.message, { id: toastPostId })
         }
         setIsDisabled(false)
       },
       onSuccess: (data) => {
-        toast.success('Post created successfully')
+        toast.success('Post created successfully', { id: toastPostId })
         setTitle('')
         setIsDisabled(false)
       },
@@ -41,7 +42,7 @@ const AddPost = () => {
 
   const submitPost = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log(title)
+    toastPostId = toast.loading('Creating your post', { id: toastPostId })
     setIsDisabled(true)
     mutate(title)
   }
@@ -54,7 +55,7 @@ const AddPost = () => {
           value={title}
           name="title"
           placeholder="What's on your mind?"
-          className="p-4 text-lg rounded-md my-2 bg-neutral-900 focus:outline-none focus:border-2 focus:border-teal-700"
+          className="p-4 text-lg rounded-md my-2 bg-neutral-900 focus:outline-none focus:border-2 focus:border-teal-700 placeholder:text-zinc-400"
         ></textarea>
       </div>
       <div className="flex items-center justify-between gap-2">
