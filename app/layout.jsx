@@ -5,6 +5,16 @@
 import Nav from './auth/Nav'
 import './globals.css'
 import { Roboto } from 'next/font/google'
+import QueryWrapper from './QueryWrapper'
+
+/**
+ * ? Query Wrapper
+ * ? This is a tanstack package used for encapsulation of queries
+ * ? basically we use this instead of fetching directly using
+ * ? the fetch API
+ * ? I understand this as a kind of useContext for fetching data
+ * ? in our entire application
+ */
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -23,8 +33,10 @@ export default function RootLayout({ children }) {
       <body
         className={`bg-neutral-900 mx-4 md:mx-48 xl:mx-96} ${roboto.variable}`}
       >
-        <Nav />
-        {children}
+        <QueryWrapper>
+          <Nav />
+          {children}
+        </QueryWrapper>
       </body>
     </html>
   )
