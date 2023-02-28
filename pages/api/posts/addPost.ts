@@ -14,7 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     //? Get user
 
     const prismaUser = await prisma.user.findUnique({
-      where: { email: session?.user?.email },
+      where: { email: session?.user?.email! },
     })
 
     // ?Check on title
@@ -31,7 +31,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const result = await prisma.post.create({
         data: {
           title,
-          userId: prismaUser?.id,
+          userId: prismaUser?.id!,
         },
       })
       res.status(200).json(result)
