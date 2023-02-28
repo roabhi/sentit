@@ -4,9 +4,8 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     try {
-      console.log(req.query)
       const data = await prisma.post.findUnique({
-        where: { id: req.query.details },
+        where: { id: req.query.details?.toString() },
         include: {
           user: true,
           comments: { orderBy: { createdAt: 'desc' }, include: { user: true } },
