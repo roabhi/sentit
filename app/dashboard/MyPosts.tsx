@@ -21,7 +21,6 @@ const MyPosts = () => {
 
   return (
     <div>
-      {console.log(data.Post)}
       {data?.Post?.map((post) => (
         <EditPost
           id={post.id}
