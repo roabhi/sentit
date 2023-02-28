@@ -26,7 +26,7 @@ const PostDetail = (url: URL) => {
 
   if (isLoading)
     return <h4 className="text-neutral-300 font-semibold">Loading...</h4>
-  console.log(data)
+  // console.log(data)
   return (
     <div>
       <Post

@@ -4,10 +4,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 type PostProps = {
-  id: string
-  avatar: string
-  name: string
-  postTitle: string
+  id?: string
+  avatar?: string
+  name?: string
+  postTitle?: string
   comments?: {
     id: string
     postId: string
@@ -15,7 +15,7 @@ type PostProps = {
   }[]
 }
 
-const Post = ({ avatar, name, postTitle, id, comments }) => {
+const Post = ({ avatar, name, postTitle, id, comments }: PostProps) => {
   return (
     <div className="bg-zinc-800 my-8 p-8 rounded-lg">
       <div className="flex items-center gap-2">
@@ -23,7 +23,7 @@ const Post = ({ avatar, name, postTitle, id, comments }) => {
           className="rounded-full"
           width={32}
           height={32}
-          src={avatar}
+          src={avatar!}
           alt="avatar"
         />
         <h3 className="font-bold pl-3 text-gray-500">{name}</h3>

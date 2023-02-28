@@ -12,7 +12,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     //? Get user
     const prismaUser = await prisma.user.findUnique({
-      where: { email: session?.user?.email },
+      where: { email: session?.user?.email! },
     })
 
     //? Add comment
@@ -25,8 +25,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
       const result = await prisma.comment.create({
         data: {
-          message: title,
-          userId: prismaUser?.id,
+          message: title!,
+          userId: prismaUser?.id!,
           postId,
         },
       })

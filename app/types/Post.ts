@@ -14,6 +14,7 @@ export type PostType = {
     postId: string
     title: string
     userId: string
+    message: string
     user: {
       email: string
       id: string
