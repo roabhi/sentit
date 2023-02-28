@@ -32,7 +32,7 @@ const Post = ({ avatar, name, postTitle, id, comments }) => {
         <p className="break-all text-zinc-400">{postTitle}</p>
       </div>
       <div className="flex gap-4 cursor-pointer items-center">
-        <Link href={`/posts/${id}`}>
+        <Link href={`/post/${id}`}>
           <p className="text-sm font-bold text-gray-500">
             {comments?.length} Comments
           </p>
