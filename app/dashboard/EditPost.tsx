@@ -21,7 +21,7 @@ type EditProps = {
 
 const EditPost = ({ avatar, name, title, comments, id }: EditProps) => {
   // ? Toggle
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState<Boolean>(false)
   let deleteToastId: string
   const queryClient = useQueryClient()
   // ? Delete Post
