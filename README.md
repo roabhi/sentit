@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![NextJs Sent It. Web App](https://i.ibb.co/JkbMSKL/localhost-3000-i-Pad-Mini-2.png 'Next Js Sent It. Webb App')
 
 # Sentit
 
